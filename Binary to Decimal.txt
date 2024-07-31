@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <math.h>
+int binary_to_decimal(int binum,int decnum,int bit)
+{
+    int bitwt;
+    if(binum>0)
+    {
+        bitwt=binum % 10;
+        decnum=decnum + bitwt*pow(2,bit);
+        bit++;
+        binum=binum/10;
+        decnum=binary_to_decimal(binum,decnum,bit);
+    }
+    return decnum;
+}
+int main()
+{
+    int decimalnum=0,binarynum,bitweight=0;
+    printf("Enter the binary number: ");
+    scanf("%d",&binarynum);
+    decimalnum=binary_to_decimal(binarynum,decimalnum,bitweight);
+    printf("Binary= %d\n",binarynum);
+    printf("Decimal= %d\n",decimalnum);
+    return 0;
+}

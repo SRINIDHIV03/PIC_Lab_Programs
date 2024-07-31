@@ -1,0 +1,42 @@
+#include <stdio.h>
+int find_gcd(int,int);
+int find_lcm(int,int);
+int main()
+{
+    int gcd,lcm,n1,n2;
+    printf("Enter the first number: ");
+    scanf("%d",&n1);
+    printf("Enter the second number: ");
+    scanf("%d",&n2);
+    gcd=find_gcd(n1,n2);
+    printf("GCD of %d and %d = %d\n",n1,n2,gcd);
+    if(n1>n2)
+    lcm=find_lcm(n1,n2);
+    else
+    lcm=find_lcm(n2,n1);
+    printf("LCM of %d and %d = %d\n",n1,n2,lcm);
+    return 0;
+}
+
+int find_gcd(int n1,int n2)
+{
+    while(n1!=n2)
+    {
+        if(n1>n2)
+        return find_gcd(n1-n2,n2);
+        else
+        return find_gcd(n1,n2-n1);
+    }
+    return n1;
+}
+
+int find_lcm(int n1,int n2)
+{
+    static int temp=1;
+    if(temp%n1==0 && temp%n2==0)
+    {
+        return temp;
+    }
+    temp++;
+    find_lcm(n1,n2);
+}

@@ -1,0 +1,44 @@
+#include <stdio.h>
+struct student
+{
+    char name[25];
+    int rollno;
+    int arr[3];
+};
+int main()
+{
+    struct student s[20];
+    int n,i,search,a;
+    printf("Enter number of students: ");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("Enter the name of %d student: ",i+1);
+        scanf("%s",s[i].name);
+        printf("Enter the roll no of %d student: ",i+1);
+        scanf("%d",&s[i].rollno);
+        printf("Enter three test scores: ");
+        scanf("%d %d %d",&s[i].arr[0],&s[i].arr[1],&s[i].arr[2]);
+    }
+    printf("Enter the roll number whose record is to be searched: ");
+    scanf("%d",&search);
+    for(i=0;i<n;i++)
+    {
+        if(s[i].rollno==search)
+        {
+            break;
+        }
+    }
+    if(i<n)
+    {
+        printf("Record Found!!!\n");
+        printf("Name: %s\n",s[i].name);
+        printf("Roll No.: %d\n",s[i].rollno);
+        printf("Three test scores: %d\t%d\t%d\t\n",s[i].arr[0],s[i].arr[1],s[i].arr[2]);
+    }
+    else
+    {
+        printf("No Records Found!!!\n");
+    }
+    return 0;
+}
